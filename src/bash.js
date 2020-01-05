@@ -1,17 +1,30 @@
 const express = require("express");
 const app = express();
 const exec = require("child_process").exec;
+const { spawn } = require("child_process");
+const bat = spawn("cmd.exe", ["/c", "demo.bat"]);
+//const x = require("./demo.bat");
 
 //get home page
+var X = "this is a param";
+
 app.get("/", (req, res) => {
-  exec("cd C:/Users/Pavilion & dir", (err, stdout, stderr) => {
+  exec("bash.sh " + X, (err, stdout, stderr) => {
     if (err) {
       console.error(err);
       return;
     }
     console.log(stdout);
   });
-  console.log("adfdfa");
+
+  // bat.stdout.on("data", data => {
+  //   console.log(`stdout: ${data}`);
+  // });
+
+  // bat.stderr.on("data", data => {
+  //   console.error(`stderr: ${data}`);
+  // });
+
   res.send("Done");
 });
 

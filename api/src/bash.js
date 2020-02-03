@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const exec = require("child_process").exec;
 const { spawn } = require("child_process");
-const bat = spawn("cmd.exe", ["/c", "demo.bat"]);
+//const bat = spawn("cmd.exe", ["/c", "demo.bat"]);
 //const x = require("./demo.bat");
 
 //get home page

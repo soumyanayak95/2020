@@ -37,7 +37,7 @@ router.get("/bash", function(req, res, next) {
 
 router.post("/", urlencodedParser, function(req, res) {
   console.log(req.body.url + " <- this is request body!!!!!!!");
-  res.send("testAPI post method");
+  res.send("adffdfa");
 });
 
 module.exports = router;

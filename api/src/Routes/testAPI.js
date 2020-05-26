@@ -12,19 +12,19 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(bodyParser.json());
 
-router.get("/", function(req, res, next) {
+router.get("/", function (req, res, next) {
   res.send("API is working properly in the GET method gdfgdgdg");
 });
 
-router.get("/test", function(req, res, next) {
+router.get("/test", function (req, res, next) {
   res.send({ text: "testAPI/test method" });
 });
 
 //bash script execute
 const X = "this is a param";
 
-router.get("/bash", function(req, res, next) {
-  exec("bash.sh", (err, stdout, stderr) => {
+router.get("/bash", function (req, res, next) {
+  exec("./bash.sh", (err, stdout, stderr) => {
     if (err) {
       console.error(err);
       return;
@@ -35,9 +35,19 @@ router.get("/bash", function(req, res, next) {
   res.send("Bash script executed here");
 });
 
-router.post("/", urlencodedParser, function(req, res) {
+router.post("/", urlencodedParser, function (req, res) {
   console.log(req.body.url + " <- this is request body!!!!!!!");
-  res.send("adffdfa");
+  res.send("response string from node");
+
+  exec("bash.sh", (err, stdout, stderr) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(stdout);
+  });
+
+  //res.send("Bash script executed here");
 });
 
 module.exports = router;

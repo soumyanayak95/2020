@@ -4,7 +4,8 @@ STRING="Hello World!"
 # print the contents of the variable on screen
 echo $STRING
 echo $*
+ls
 # ls
-#cd ../../folder
-#git clone https://github.com/chunkulu/hello_world.git
-#$SHELL
+cd ../../repos
+git clone https://github.com/chunkulu/hello_world.git
+$SHELL

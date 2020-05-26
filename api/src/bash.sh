@@ -7,4 +7,4 @@ echo $*
 # ls
 #cd ../../folder
 #git clone https://github.com/chunkulu/hello_world.git
-#$SHELL
+$SHELL

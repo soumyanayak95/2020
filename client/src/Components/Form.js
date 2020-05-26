@@ -6,14 +6,15 @@ import { useFormik } from "formik";
 
 function Form() {
   const [r, saveResponse] = useState(["initial response"]);
-  const listResponse = r.map(r => <li>{r}</li>);
+  //const listResponse = r.map(r => <li>{r}</li>);
 
-  function handleSubmit(e) {
-    console.log(e.target.url.value);
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(event.target.url.value);
     axios
-      .post("http://localhost:5000/testAPI/", {
-        // url: e.target.url.value
-        url: e.target.url.value
+      .post("http://localhost:5000/testAPI", {
+        //url: "dummy.url.com",
+        url: event.target.url.value,
       })
       //.then(res => saveResponse(r.push("response from node...")))
       // .then(response => {
@@ -21,8 +22,8 @@ function Form() {
       //   console.log(response);
       //   console.log(response.data);
       // })
-      .then(res => console.log(res))
-      .catch(err => err);
+      .then((res) => console.log(res))
+      .catch((err) => err);
   }
 
   // const formik = useFormik({
@@ -49,20 +50,18 @@ function Form() {
   return (
     <Router>
       <div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>
             Git Repository URL:
             <input type="text" name="url" />
           </label>
-          <button type="submit" onClick={handleSubmit}>
-            Build Image{" "}
-          </button>
+          <button type="submit">Build Image</button>
         </form>
-        <ul>
+        {/* <ul>
           {r.map(r => (
             <li>{r}</li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </Router>
   );

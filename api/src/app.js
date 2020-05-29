@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(express.static(path.join(__dirname, "public")));
 
 // app.use("/", indexRouter);
-// app.use("/users", usersRouter);
+//app.use("/scripts", scriptsRouter);
 app.use("/testAPI", testAPIRouter);
 
 // // catch 404 and forward to error handler

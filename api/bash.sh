@@ -15,7 +15,7 @@ echo $2
 # echo url
 ls
 # ls
-# cd ../../repos
-# git clone $1
-git clone https://github.com/chunkulu/hello_world.git
+cd ../../a
+git clone $1
+# git clone https://github.com/chunkulu/hello_world.git
 $SHELL

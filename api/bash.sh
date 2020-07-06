@@ -13,9 +13,9 @@ echo $2
 # url = $url
 # echo $X
 # echo url
-ls
 # ls
-cd ../../a
-git clone $1
+# ls
+# cd ../../a
+# git clone $1
 # git clone https://github.com/chunkulu/hello_world.git
 $SHELL

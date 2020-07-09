@@ -21,21 +21,28 @@ router.get("/test", function (req, res, next) {
 router.post("/", urlencodedParser, function (req, res) {
   const url = req.body.url;
   console.log(url);
-  if ( !isGitUrl(url) ){
-    console.log("Invalid Git url!!!")
+
+  try{
+    if ( !isGitUrl(url) ){
+      console.log("Invalid Git url!!!")
+      throw new Error("Invalid Git url");
+    }else{
+      const ls = spawn("git", ['clone', url]);
+      ls.stdout.on("data", (data) => console.log("data", data.toString('utf-8')));
+      ls.stderr.on('data', (data) => {
+          // console.log(`stderr: ${data}`);
+          console.error(`stderr: ${data}`)
+      });
+      ls.on('close', (code) => {
+          console.log(`child process exited with code ${code}`);
+      });
+      res.send(url);
+    }
+  }catch(e){
+    // console.log(e)
     res.status(500).send("Invalid Git url");
   }
-  else{
-    const ls = spawn("git", ['clone', url]);
-    ls.stdout.on("data", (data) => console.log("data", data.toString('utf-8')));
-    ls.stderr.on('data', (data) => {
-        console.log(`stderr: ${data}`);
-    });
-    ls.on('close', (code) => {
-        console.log(`child process exited with code ${code}`);
-    });
-    res.send(url);
-  }
+
 });
 
 module.exports = router;

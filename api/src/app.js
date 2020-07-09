@@ -8,7 +8,7 @@ var cors = require("cors");
 
 // var indexRouter = require("./routes/index");
 // var usersRouter = require("./routes/users");
-var testAPIRouter = require("./Routes/testAPI");
+var deploy = require("./Routes/deploy");
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // app.use("/", indexRouter);
 //app.use("/scripts", scriptsRouter);
-app.use("/testAPI", testAPIRouter);
+app.use("/deploy", deploy);
 
 // // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

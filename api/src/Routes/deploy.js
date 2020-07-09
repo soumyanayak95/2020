@@ -9,10 +9,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(bodyParser.json());
 
-router.get("/", function (req, res, next) {
-  res.send("API is working properly in the GET method");
-});
-
 router.get("/test", function (req, res, next) {
   res.send({ text: "testAPI/test method" });
 });
@@ -30,7 +26,6 @@ router.post("/", urlencodedParser, function (req, res) {
       const ls = spawn("git", ['clone', url]);
       ls.stdout.on("data", (data) => console.log("data", data.toString('utf-8')));
       ls.stderr.on('data', (data) => {
-          // console.log(`stderr: ${data}`);
           console.error(`stderr: ${data}`)
       });
       ls.on('close', (code) => {
@@ -39,7 +34,6 @@ router.post("/", urlencodedParser, function (req, res) {
       res.send(url);
     }
   }catch(e){
-    // console.log(e)
     res.status(500).send("Invalid Git url");
   }
 

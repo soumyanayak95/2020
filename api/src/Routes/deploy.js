@@ -35,7 +35,7 @@ router.post("/", urlencodedParser, function (req, res) {
       // });
 
       // echo url in bash script
-      exec("bash.sh " + `'${url}'`, (err, stdout, stderr) => {
+      exec("bash.sh " + `'${url}'` , (err, stdout, stderr) => {
         if (err){
           console.error(err);
         }

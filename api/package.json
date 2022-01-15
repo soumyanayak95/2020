@@ -18,6 +18,6 @@
     "is-git-url": "^1.0.0",
     "mongodb": "^3.4.1",
     "nodemon": "^2.0.2",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.5"
   }
 }
